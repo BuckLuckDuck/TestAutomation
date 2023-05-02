@@ -57,11 +57,13 @@ public class PlaywrightMain {
                 pageState.updateElements(page);
                 pageState.printElements(options);
 
-                if (options.isAskForClick()) {
+                if (options.isPrintDOM())
+                    pageState.printDomTree(page);
+
+                if (options.isAskForClick())
                     pageState.interactWithElements(options);
-                } else {
+                else
                     break;
-                }
             }
 
             page.close();

@@ -5,6 +5,7 @@ public class OptionsService {
     private static final String SHOW_VISIBLE = "-v";
     private static final String SHOW_CLICKABLE = "-c";
     private static final String ASK_FOR_CLICK = "-a";
+    private static final String PRINT_DOM = "-dom";
 
     public static Options setUserOptions(String[] args) {
         Options options = new Options();
@@ -21,6 +22,8 @@ public class OptionsService {
 
             if (arg.equals(ASK_FOR_CLICK))
                 options.setAskForClick(!options.isAskForClick());
+            if (arg.equals(PRINT_DOM))
+                options.setPrintDOM(!options.isPrintDOM());
         }
 
         return options;

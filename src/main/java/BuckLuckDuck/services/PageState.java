@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PageState {
-    private static List<ElementHandle> visibleElements;
-    private static List<ClickableElement> clickableElements;
+    private List<ElementHandle> visibleElements;
+    private List<ClickableElement> clickableElements;
     private List<String> elementTypes;
 
     private final PageScanner pageScanner;
@@ -58,12 +58,10 @@ public class PageState {
         }
     }
 
-    public static List<ElementHandle> getVisibleElements() {
-        return visibleElements;
-    }
-
-    public static List<ClickableElement> getClickableElements() {
-        return clickableElements;
+    public void printDomTree(Page page) {
+        String domContent = page.content();
+        System.out.println("DOM content:");
+        System.out.println(domContent);
     }
 
     public static class Builder {

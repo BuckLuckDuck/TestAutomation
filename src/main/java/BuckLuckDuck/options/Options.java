@@ -2,8 +2,9 @@ package BuckLuckDuck.options;
 
 public class Options {
     boolean showVisible = false;
-    boolean showClickable = true;
+    boolean showClickable = false;
     boolean askForClick = false;
+    boolean printDOM = true;
     String navigateLink = "";
 
     public Options() {
@@ -39,5 +40,13 @@ public class Options {
 
     public void setAskForClick(boolean askForClick) {
         this.askForClick = askForClick;
+    }
+
+    public boolean isPrintDOM() {
+        return printDOM;
+    }
+
+    public void setPrintDOM(boolean printDOM) {
+        this.printDOM = printDOM;
     }
 }
