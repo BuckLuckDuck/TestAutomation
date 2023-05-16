@@ -51,4 +51,8 @@ public class ElementAction {
     public void reload() {
         page.reload();
     }
+
+    public Page getPage() {
+        return page;
+    }
 }

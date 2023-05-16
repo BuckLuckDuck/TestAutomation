@@ -3,7 +3,7 @@ package BuckLuckDuck.options;
 public class Options {
     boolean showVisible = false;
     boolean showClickable = false;
-    boolean askForClick = false;
+    boolean askForClick = true;
     boolean printDOM = true;
     String navigateLink = "";
 

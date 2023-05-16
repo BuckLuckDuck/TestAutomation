@@ -9,7 +9,13 @@ import java.io.InputStreamReader;
 import java.util.stream.Collectors;
 
 public class ScriptReader {
-    public void executeScriptFromResources(Page page, String scriptFileName) {
+    private final Page page;
+
+    public ScriptReader(Page page) {
+        this.page = page;
+    }
+
+    public void executeScriptFromResources(String scriptFileName) {
         try {
             InputStream is = getClass().getResourceAsStream("/" + scriptFileName);
             if (is == null) {

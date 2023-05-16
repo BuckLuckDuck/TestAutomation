@@ -50,11 +50,10 @@ public class PageState {
             int index = Integer.parseInt(clickInfo[0]);
             String inputText = clickInfo[1];
 
-            if (index == -1) {
+            if (index == -1)
                 return;
-            } else {
+            else
                 elementAction.clickOnElement(clickableElements, index, inputText);
-            }
         }
     }
 
