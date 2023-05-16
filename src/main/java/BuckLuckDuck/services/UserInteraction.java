@@ -15,12 +15,14 @@ public class UserInteraction {
     private final Map<String, Command> commands;
     private final ElementUpdater elementUpdater;
     private final ElementManager elementManager;
+    private final ScriptReader scriptReader;
 
     private UserInteraction(Builder builder) {
         this.scanner = new Scanner(System.in);
         this.options = builder.options;
         this.elementUpdater = builder.elementUpdater;
         this.elementManager = builder.elementManager;
+        this.scriptReader = builder.scriptReader;
         this.commands = new HashMap<>();
         initializeCommands(builder.elementAction);
     }
@@ -43,13 +45,16 @@ public class UserInteraction {
 
     public String[] askForClick(List<String> elementTypes) {
         // Ввод номера элемента для клика
-        System.out.println("\nEnter number of element for click imitation:");
+        System.out.println("\nEnter number of element for click imitation or write command:");
         String input = scanner.next();
 
         // Проверка на команду
         while (input.charAt(0) == '-') {
             boolean isCorrectCommand = parseAndExecuteCommand(input);
-            System.out.println(isCorrectCommand);
+
+            // TODO - Это темповое решение для проверки работоспособности команд
+            // System.out.println(isCorrectCommand);
+
             if(isCorrectCommand)
                 elementUpdater.updateAndPrintElements();
 
@@ -78,6 +83,10 @@ public class UserInteraction {
             int elementsPerPage = Integer.parseInt(input.substring("-ve=".length()));
             new SetElementsPerPageCommand(options, elementManager, elementsPerPage).execute();
         }
+        else if (input.startsWith("-js=")) {
+            String scriptFileName = input.substring("-js=".length());
+            new ExecuteScriptCommand(options, scriptFileName, scriptReader).execute();
+        }
         // Выполнение команд без параметров
         else if (commands.containsKey(input))
             commands.get(input).execute();
@@ -95,6 +104,7 @@ public class UserInteraction {
         private ElementAction elementAction;
         private ElementUpdater elementUpdater;
         private ElementManager elementManager;
+        private ScriptReader scriptReader;
 
         public Builder() {
         }
@@ -116,6 +126,11 @@ public class UserInteraction {
 
         public Builder elementManager(ElementManager elementManager) {
             this.elementManager = elementManager;
+            return this;
+        }
+
+        public Builder scriptReader(ScriptReader scriptReader) {
+            this.scriptReader = scriptReader;
             return this;
         }
 

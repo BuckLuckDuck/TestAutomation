@@ -39,11 +39,13 @@ public class PlaywrightMain {
             ElementAction elementAction = new ElementAction(page);
             ElementManager elementManager = new ElementManager();
             ElementUpdater elementUpdater = new ElementUpdater(page, options);
+            ScriptReader scriptReader = new ScriptReader(page);
             UserInteraction userInteraction = new UserInteraction.Builder()
                     .options(options)
                     .elementAction(elementAction)
                     .elementUpdater(elementUpdater)
                     .elementManager(elementManager)
+                    .scriptReader(scriptReader)
                     .build();
             PageState pageState = new PageState.Builder()
                     .setPageScanner(pageScanner)
@@ -54,6 +56,8 @@ public class PlaywrightMain {
             elementUpdater.setPageState(pageState);
 
             while (true) {
+//                scriptReader.executeScriptFromResources("temp.js");
+
                 pageState.updateElements(page);
                 pageState.printElements(options);
 
