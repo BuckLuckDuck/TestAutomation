@@ -54,6 +54,13 @@ public class PlaywrightMain {
                     .setUserInteraction(userInteraction)
                     .build();
             elementUpdater.setPageState(pageState);
+            pageState.printDomTree(page);
+
+
+            page.onDOMContentLoaded(event -> {
+                LOGGER.info("DOM loaded or updated!");
+                pageState.printDomTree(page);
+            });
 
             while (true) {
 //                scriptReader.executeScriptFromResources("temp.js");
@@ -61,8 +68,8 @@ public class PlaywrightMain {
                 pageState.updateElements(page);
                 pageState.printElements(options);
 
-                if (options.isPrintDOM())
-                    pageState.printDomTree(page);
+                //if (options.isPrintDOM())
+                    //pageState.printDomTree(page);
 
                 if (options.isAskForClick())
                     pageState.interactWithElements(options);

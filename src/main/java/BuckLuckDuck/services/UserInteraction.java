@@ -95,7 +95,7 @@ public class UserInteraction {
             System.out.println("\nWrong command. Try again.");
             return false;
         }
-        System.out.println("\nEnter number of element for click imitation:");
+        System.out.println("\nEnter number of element for click imitation or write command:");
         return true;
     }
 
