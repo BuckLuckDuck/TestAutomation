@@ -52,8 +52,11 @@ public class PlaywrightMain {
                     .setUserInteraction(userInteraction)
                     .build();
             elementUpdater.setPageState(pageState);
+            ScriptReader scriptReader = new ScriptReader();
 
             while (true) {
+                scriptReader.executeScriptFromResources(page, "temp.js");
+
                 pageState.updateElements(page);
                 pageState.printElements(options);
 
