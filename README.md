@@ -55,3 +55,63 @@ java PlaywrightMain -l=https://example.com -v -c -a
 - `-co`: Отображает только элементы типа "other" из списка кликабельных элементов.
 - `-ca`: Отображает все кликабельные элементы на веб-странице.
 - `-js={scriptName.js}`: Исполняет JS скрипт на текущей странице. Скрипт должен находиться в папке resources. Например: -js=temp.js.
+
+____________________________________________________________________________________________________
+
+# Automation of Management and Testing for Websites Using the Google Chrome Remote Debugging Protocol
+
+## Features
+
+- Display visible elements on a web page
+- Display clickable elements on a web page
+- Configure tool behavior using command-line parameters
+- Ability to click on an element, enter text into an input field, and navigate through links
+- Execute commands to navigate forward, backward, and refresh the page
+- Pagination and filtering of displayed elements
+- Execute JavaScript scripts during program execution
+
+## Usage
+
+To use the utility, compile and run the `PlaywrightMain.java` file with the appropriate command-line parameters.
+
+Command-line parameters:
+- `-l`: Sets the URL to navigate to (e.g., `-l=https://example.com`)
+- `-v`: Toggles the display of visible elements on the web page. Default: **disabled**.
+- `-c`: Toggles the display of clickable elements on the web page. Default: **disabled**.
+- `-a`: Toggles the ability to prompt the user to click on an element or enter a command. Default: **enabled**.
+- `-dom`: Toggles the display of the web page's DOM. Default: **enabled**.
+
+Example:
+
+```
+java PlaywrightMain -l=https://example.com -v -c -a
+```
+
+This command will launch the utility with the specified parameters:
+
+- URL to navigate to: `https://example.com`
+- Display of visible elements: enabled
+- Display of clickable elements: enabled
+- Prompting the user to click on an element: enabled
+
+The utility will display information about visible and clickable elements on the web page and prompt the user to click on one of them.
+During program usage, input the indexes of clickable elements to interact with them.
+When selecting an input field, you will be prompted to enter the text to be typed into that field.
+
+### Commands during Program Usage
+- `-v`: Toggles the display of visible elements on the web page.
+- `-c`: Toggles the display of clickable elements on the web page.
+- `-a`: Toggles the ability to prompt the user to click on an element.
+- `-back`: Navigates to the previous page.
+- `-next`: Navigates to the next page.
+- `-reload`: Refreshes the current page.
+- `-vn`: Goes to the next page of visible elements.
+- `-vp`: Goes to the previous page of visible elements.
+- `-vpage={x}`: Goes to page x of visible elements, where x is the page number.
+- `-ve={x}`: Sets the number of elements per page, where x is the number of elements to display per page.
+- `-ci`: Displays only input elements from the list of clickable elements.
+- `-cb`: Displays only buttons from the list of clickable elements.
+- `-cl`: Displays only links from the list of clickable elements.
+- `-co`: Displays only "other" type elements from the list of clickable elements.
+- `-ca`: Displays all clickable elements on the web page.
+- `-js={scriptName.js}`: Executes a JS script on the current page. The script should be located in the resources folder. For example: `-js=temp.js`.
